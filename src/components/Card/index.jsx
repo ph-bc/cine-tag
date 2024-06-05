@@ -2,6 +2,7 @@ import styles from "./index.module.css";
 import favoriteIcon from "./favorite.png";
 import unfavoriteIcon from "./favorite_outline.png";
 import { useFavoriteContext } from "@/contexts/favorites";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export default function Card({ id, title, cover }) {
@@ -11,8 +12,10 @@ export default function Card({ id, title, cover }) {
 
   return (
     <div className={styles.cardContainer}>
-      <img src={cover} alt={title} className={styles.cover} />
-      <h2>{title}</h2>
+      <Link className={styles.link} to={`/${id}`}>
+        <img src={cover} alt={title} className={styles.cover} />
+        <h2>{title}</h2>
+      </Link>
       <img
         src={icon}
         alt="Favoritar filme"
