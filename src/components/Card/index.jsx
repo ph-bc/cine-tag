@@ -12,8 +12,8 @@ export default function Card({ id, title, cover }) {
 
   return (
     <div className={styles.cardContainer}>
-      <Link className={styles.link} to={`/${id}`}>
-        <img src={cover} alt={title} className={styles.cover} />
+      <Link className={styles.link} to={`/${encodeURIComponent(title)}`}>
+        <img className={styles.cover} src={cover} alt={title} />
         <h2>{title}</h2>
       </Link>
       <img

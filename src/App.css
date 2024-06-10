@@ -3,6 +3,9 @@
   --white: #ffffff;
   --black: #000000;
   --gray: #e2e2e2;
+
+  --header-height: 160px;
+  --footer-height: 140px;
 }
 
 body {

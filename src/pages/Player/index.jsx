@@ -1,15 +1,26 @@
 import Banner from "@/components/Banner";
 import styles from "./index.module.css";
 import Title from "@/components/Title";
-import videos from "@/jsons/db.json";
 import { useParams } from "react-router-dom";
 import NotFound from "../NotFound";
+import { useState, useEffect } from "react";
 
 export default function Player() {
   const params = useParams();
-  const video = videos.find((video) => {
-    return video.id === Number(params.id);
-  });
+  const [video, setVideo] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `https://my-json-server.typicode.com/ph-bc/cine-tag/videos?title=${params.title}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setVideo(...data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [params.title]);
 
   if (!video) {
     return <NotFound />;
@@ -25,9 +36,8 @@ export default function Player() {
           height="100%"
           src={video.link}
           title={video.title}
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullScreen
+          allowFullScreen
         ></iframe>
       </section>
     </>

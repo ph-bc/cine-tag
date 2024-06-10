@@ -12,7 +12,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Default />}>
           <Route index element={<Home />} />
           <Route path="favoritos" element={<Favorites />} />
-          <Route path=":id" element={<Player />} />
+          <Route path=":title" element={<Player />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
